@@ -1,10 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class Boss {
+
+	int mp = 53; //魔力
+
+	//魔法用の関数
+	public void Magic(int needMp) {
+
+			if (mp >= 5) {
+				this.mp -= needMp;
+				Debug.Log ("ファイヤーボールの呪文を詠唱中・・・残りのMPは" + this.mp);
+			} else {
+				Debug.Log ("MPが足りない！！");
+			}
+
+	}
+}
+		
 public class Test : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
+
 		// 要素数5の配列を初期化する
 		int[] array = new int[5];
 
@@ -24,7 +41,18 @@ public class Test : MonoBehaviour {
 		for (int i = array.Length - 1; 0 <= i; i--) {
 			Debug.Log (array [i]);
 		}
-	}
+
+		// Bossクラスの変数を宣言してインスタンスを代入
+		Boss lastboss = new Boss ();
+
+		for (int i = 0; i < 11; i++) {
+		
+			//魔法用の関数を呼び出す
+			lastboss.Magic (5);
+
+		}
+
+}
 
 	// Update is called once per frame
 	void Update () {
